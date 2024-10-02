@@ -6,6 +6,7 @@ import 'views/onboarding_screen/onboarding_screen.dart';
 void main() async{
   runApp(const MyApp());
 }
+////////////
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
