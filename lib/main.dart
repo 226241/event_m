@@ -13,7 +13,7 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
+  @override0
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
