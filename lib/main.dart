@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'views/onboarding_screen/onboarding_screen.dart';
 
+// rudra
 void main() async{
   //Firebase.initializeApp(options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId));
   runApp(const MyApp());
