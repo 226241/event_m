@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'views/onboarding_screen/onboarding_screen.dart';
 
 void main() async{
-  Firebase.initializeApp(options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId));
+  //Firebase.initializeApp(options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId));
   runApp(const MyApp());
 }
 
@@ -13,7 +13,7 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override0
+  @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
