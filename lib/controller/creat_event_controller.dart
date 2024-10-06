@@ -10,6 +10,18 @@ class AddEventController extends GetxController {
   var isPrivate = false.obs;
   var categories = ['Conference', 'Sports', 'Food & Drinks'].obs;
   var selectedCategories = <String>[].obs;
+  RxString imagePath = ''.obs;
+
+  RxList<Map<String, dynamic>> events = <Map<String, dynamic>>[].obs;
+
+  // Method to add a new event
+  void addEvent(String title, String date) {
+    events.add({
+      'title': title,
+      'date': date,
+      // Add more details as needed
+    });
+  }
 
   void toggleCategory(String category) {
     if (selectedCategories.contains(category)) {
@@ -19,3 +31,4 @@ class AddEventController extends GetxController {
     }
   }
 }
+

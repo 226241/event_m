@@ -1,17 +1,23 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-
 import '../../controller/creat_event_controller.dart';
-
-
-
-
 
 class CreateEventView extends StatelessWidget {
   final AddEventController controller = Get.put(AddEventController());
 
-   CreateEventView({super.key});
+  CreateEventView({super.key});
+
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      controller.imagePath.value = image.path; // Save the picked image path in controller
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,14 @@ class CreateEventView extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              // Logic to create event
+              // Add the new event using the controller
+              controller.addEvent(
+                controller.titleController.text,
+                DateFormat('dd MMM yyyy').format(controller.startDate.value),
+              );
+
+              // Navigate back to HomeScreen
+              Get.back();
             },
             child: const Text('Create', style: TextStyle(color: Colors.blue)),
           ),
@@ -34,16 +47,26 @@ class CreateEventView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                onTap: () {
-                  // Logic to pick image
-                },
-                child: Container(
-                  height: 150,
-                  color: Colors.grey[300],
-                  child: const Center(
-                    child: Text('Pick an Image!', style: TextStyle(fontSize: 18)),
-                  ),
-                ),
+                onTap: _pickImage,
+                child: Obx(() {
+                  return Container(
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      image: controller.imagePath.value.isNotEmpty
+                          ? DecorationImage(
+                        image: FileImage(File(controller.imagePath.value)),
+                        fit: BoxFit.cover,
+                      )
+                          : null,
+                    ),
+                    child: controller.imagePath.value.isEmpty
+                        ? const Center(
+                      child: Text('Pick an Image!', style: TextStyle(fontSize: 18)),
+                    )
+                        : null,
+                  );
+                }),
               ),
               const SizedBox(height: 16),
               const Text('Choose a Catchy Title!', style: TextStyle(fontSize: 18)),

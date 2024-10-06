@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../controller/creat_event_controller.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
+class HomeScreen extends StatelessWidget {
+  final AddEventController controller = Get.find<AddEventController>();
 
-class _HomeScreenState extends State<HomeScreen> {
-
-  //DataController dataController = Get.find<DataController>();
+   HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,28 +16,41 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           height: double.infinity,
           width: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //CustomAppBar(),
-                const Text(
-                  "What Going on today",
-                  //style: GoogleFonts.raleway(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                SizedBox(
-                  height: Get.height * 0.02,
-                ),
-                // EventsFeed(),
-                // Obx(()=> dataController.isUsersLoading.value? Center(child: CircularProgressIndicator(),) : EventsIJoined())
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              const Text(
+                "What's Going on Today",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+
+              // Display the list of events
+              Expanded(
+                child: Obx(() {
+                  if (controller.events.isEmpty) {
+                    return const Center(child: Text("No events yet."));
+                  } else {
+                    return ListView.builder(
+                      itemCount: controller.events.length,
+                      itemBuilder: (context, index) {
+                        final event = controller.events[index];
+                        return Card(
+                          child: ListTile(
+                            title: Text(event['title']),
+                            subtitle: Text(event['date']),
+                          ),
+                        );
+                      },
+                    );
+                  }
+                }),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
-
-
-
 }

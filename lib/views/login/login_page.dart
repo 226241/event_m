@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import '../../helping_widgets/common_gradient_backgroud.dart';
 import '../bottom_nav_view/bottom_bar_view.dart';
-import '../profile/profile.dart';
 import '../signup_page/signup_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -55,7 +54,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Get.to( BottomBarView());
+                  Get.to(BottomBarView()); // Normal login
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
@@ -65,6 +64,16 @@ class LoginPage extends StatelessWidget {
                 child: const Text(
                   'Login',
                   style: TextStyle(color: Colors.deepPurple),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextButton(
+                onPressed: () {
+                  Get.to(BottomBarView(isAdmin: true)); // Login as admin
+                },
+                child: const Text(
+                  'Log in as Admin',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               const SizedBox(height: 10),

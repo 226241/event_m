@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const Text(
-                'Md. Sakhawat Hosen',
+                'Haridas roy',
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
