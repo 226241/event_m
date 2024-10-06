@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'controller/creat_event_controller.dart';
 import 'views/onboarding_screen/onboarding_screen.dart';
 
-// sadfl;fdsal;dsafl;l;dsfa;llsadf;sadfl;sadf
+
+// updated branch
+
 void main() async{
   Get.put(AddEventController());
   //Firebase.initializeApp(options: FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId));

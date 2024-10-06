@@ -62,7 +62,7 @@ class LoginPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 child: const Text(
-                  'Login',
+                  'User Login',
                   style: TextStyle(color: Colors.deepPurple),
                 ),
               ),
